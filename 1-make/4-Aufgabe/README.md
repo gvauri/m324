@@ -9,3 +9,5 @@
 4. Was passiert, wenn dieser Befehl nochmals ausgeführt wird?
 
 5. Ändere die Ausgabe im C++ Programm auf “Compiled by Makefile”. Was passiert, wenn der Befehl aus den vorhergehenden Aufgaben nochmals ausgeführt wird?
+
+## Wenn ich mit dem makefile das compile mache und das im docker anziehe gibt es ein problem das es nicht mit dem gleichen kernel gemacht wurde. deswegen habe ich das einfach im Dockerfile gemacht.

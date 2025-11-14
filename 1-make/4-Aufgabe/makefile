@@ -8,7 +8,7 @@ compile:
 	fi
 run: compile
 	@if [ -f main ]; then \
-		./main; \
+		./a.out; \
 	fi
 docker-build:
 	docker build -t $(IMAGE_NAME) .
