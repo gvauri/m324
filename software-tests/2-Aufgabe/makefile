@@ -1,19 +1,19 @@
 start_mongodb:
-    docker run --name test-db -d -p 27017:27017 mongo
+	 docker run --name test_db -d -p 27017:27017 mongo
 
 test:
-	python -m coverage run ./test_file.py;
+	python -m coverage run ./test_db.py
 
-coverage:test-with-coverage
+coverage:
 	python -m coverage report
 
 clean_coverage:
 	rm .coverage
 
 clean_mongodb:
-    docker stop test-db
-    docker rm test-db
+	docker stop test_db
+	docker rm test_db
 
- test-with-coverage: test coverage clean_coverage
+test_with_coverage: test coverage clean_coverage
 
- start_integrations_test:start_mongodb test_with_coverage clean_mongodb
+start_integrations_test: start_mongodb test_with_coverage clean_mongodb
