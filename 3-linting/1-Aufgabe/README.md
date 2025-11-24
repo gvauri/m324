@@ -13,7 +13,7 @@
     --platform linux/amd64 \
     -e SONAR_HOST_URL="http://sonarqube:9000" \
     -e SONAR_SCANNER_OPTS="-Dsonar.projectKey=house" \
-    -e SONAR_TOKEN="squ_11ba443ab51f04d27cfda8fb693bd0d25206f2fc" \
+    -e SONAR_TOKEN="sqa_5201cc3bc3873a377045c3d0b5ddf8be9fbfc8c1" \
     --network sonar-net \
     -v "$(pwd)":/usr/src \
     -u $(id -u):$(id -g) \

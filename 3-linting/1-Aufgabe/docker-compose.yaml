@@ -9,7 +9,7 @@ services:
       - SONARQUBE_JDBC_PASSWORD=password1
       - SONARQUBE_JDBC_URL=jdbc:postgresql://db:5432/sonarqube
     ports:
-      - "9001:9000"
+      - "9000:9000"
       - "9092:9092"
     volumes:
       - sonarqube_conf:/opt/sonarqube/conf
