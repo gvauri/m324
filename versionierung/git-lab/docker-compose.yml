@@ -1,0 +1,40 @@
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    container_name: gitlab
+    hostname: gitlab.local
+    restart: always
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://localhost:8088'
+        gitlab_rails['gitlab_shell_ssh_port'] = 2222
+        gitlab_rails['initial_root_password'] = 'iw6+ASoyDDgWJOKxdK9MmtWE8EX4SnoIbDxU4TP0DtE='
+        letsencrypt['enable'] = false
+        puma['worker_processes'] = 2
+        sidekiq['max_concurrency'] = 10
+    ports:
+      - '8088:8088'
+      - '2222:22'
+    volumes:
+      - './gitlab/config:/etc/gitlab'
+      - './gitlab/logs:/var/log/gitlab'
+      - './gitlab/data:/var/opt/gitlab'
+    networks:
+      - gitlab-network
+    shm_size: '256m'
+
+  gitlab-runner:
+    image: gitlab/gitlab-runner:latest
+    container_name: gitlab-runner
+    restart: always
+    volumes:
+      - './gitlab-runner/config:/etc/gitlab-runner'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    networks:
+      - gitlab-network
+    depends_on:
+      - gitlab
+
+networks:
+  gitlab-network:
+    driver: bridge
