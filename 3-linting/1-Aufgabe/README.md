@@ -16,7 +16,6 @@
     -e SONAR_TOKEN="sqa_5201cc3bc3873a377045c3d0b5ddf8be9fbfc8c1" \
     --network sonar-net \
     -v "$(pwd)":/usr/src \
-    -u $(id -u):$(id -g) \
     sonarsource/sonar-scanner-cli
 ```
 
