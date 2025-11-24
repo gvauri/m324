@@ -1,5 +1,5 @@
 *.zip
 .idea
-*/venv
-*/gitlab
-*/gitlab-runner
+venv
+gitlab
+gitlab-runner

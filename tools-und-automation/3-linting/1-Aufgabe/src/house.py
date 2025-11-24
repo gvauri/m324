@@ -1,15 +1,16 @@
 class House:
     def __init__(self):
+        self.name = None
         print("New house was builded")
 
-    def GetName(self):
+    def get_name(self):
         print(self.name)
 
-    def SetName(self, name):
-        if (type(name) is not str):
+    def set_name(self, name):
+        if type(name) is not str:
             raise Exception
 
         self.name = name
 
-    def GetPrice(self):
-        print(50 + " CHF")
+    def get_price(self):
+        print(str(50) + " CHF")

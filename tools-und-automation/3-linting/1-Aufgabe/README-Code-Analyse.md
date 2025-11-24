@@ -93,14 +93,15 @@ class House:
 {{% /tab %}}
 
 {{% tab title="main.py" %}}
+
 ```python
 from house import *
 
 villa = House()
 # cottage = House()
 
-villa.SetName("Neverland")
-villa.GetName()
+villa.set_name("Neverland")
+villa.get_name()
 ```
 {{% /tab %}}
 
