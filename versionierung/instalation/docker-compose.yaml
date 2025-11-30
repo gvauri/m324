@@ -1,0 +1,36 @@
+version: "3.9"
+
+networks:
+  gitlab-network:
+    name: gitlab-network
+    driver: bridge
+
+services:
+  code.local:
+    image: gitlab/gitlab-ce:latest
+    container_name: code.local
+    hostname: code.local
+    restart: unless-stopped
+    volumes:
+      - /srv/gitlab/config:/etc/gitlab
+      - /srv/gitlab/logs:/var/log/gitlab
+      - /srv/gitlab/data:/var/opt/gitlab
+    ports:
+      - 443:443
+      - 80:80
+      - 22:22
+    networks:
+      - gitlab-network
+    shm_size: 256m
+
+  gitlab-runner:
+    image: gitlab/gitlab-runner:latest
+    container_name: gitlab-runner
+    restart: unless-stopped
+    volumes:
+      - /srv/gitlab-runner/config:/etc/gitlab-runner
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - gitlab-network
+    depends_on:
+      - code.local
