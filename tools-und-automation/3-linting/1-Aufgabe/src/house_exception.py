@@ -1,0 +1,2 @@
+class HouseException(Exception):
+    pass

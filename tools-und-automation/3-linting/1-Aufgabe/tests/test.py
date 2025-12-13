@@ -1,5 +1,9 @@
 import unittest
-from ..src.house import *
+from contextlib import redirect_stdout
+from io import StringIO
+
+from src.house import House
+from src.house_exception import HouseException
 
 
 class TestHouse(unittest.TestCase):
@@ -8,12 +12,31 @@ class TestHouse(unittest.TestCase):
 
         self.assertIsInstance(house, House)
 
-    def test_set_name(self):
+    def test_raise_name_not_str(self):
         house = House()
-        house.set_name("villa")
 
-        print(house)
-        self.assertEqual(house.get_name(), "villa")
+        self.assertRaises(HouseException, house.set_name, 1234)
+
+    def test_get_name(self):
+        house = House()
+        house.set_name("Hallo")
+
+        buffer = StringIO()
+        with redirect_stdout(buffer):
+            house.get_name()
+
+        output = buffer.getvalue().strip()
+        self.assertEqual(output, "Hallo")
+
+    def test_get_price(self):
+        house = House()
+
+        buffer = StringIO()
+        with redirect_stdout(buffer):
+            house.get_price()
+
+        output = buffer.getvalue().strip()
+        self.assertEqual(output, "50 CHF")
 
 
 if __name__ == '__main__':

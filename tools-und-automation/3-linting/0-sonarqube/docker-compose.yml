@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   sonarqube:
     image: sonarqube:latest
@@ -22,7 +20,7 @@ services:
       - db
 
   db:
-    image: postgres:latest
+    image: postgres:17.7
     container_name: db
     restart: always
     environment:
@@ -35,11 +33,10 @@ services:
     networks:
       - sonar-net
 
-
 networks:
-    sonar-net:
-        name: sonar-net
-        driver: bridge
+  sonar-net:
+    name: sonar-net
+    driver: bridge
 
 volumes:
   postgresql_data:

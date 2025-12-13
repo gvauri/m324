@@ -1,7 +1,6 @@
-from house import *
+from src.house import House
 
 villa = House()
-# cottage = House()
 
 villa.set_name("Neverland")
 villa.get_name()

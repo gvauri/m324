@@ -1,14 +1,15 @@
+from src.house_exception import HouseException
+
 class House:
     def __init__(self):
-        self.name = None
         print("New house was builded")
 
     def get_name(self):
         print(self.name)
 
     def set_name(self, name):
-        if type(name) is not str:
-            raise Exception
+        if (type(name) is not str):
+            raise HouseException
 
         self.name = name
 
